@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.P Garment #28 | Custom Tailoring</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Abhaya+Libre:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff2a74;
+            --secondary: #ff7a00;
+            --accent: #8a2be2;
+            --dark: #121212;
+            --light: #f8f9fa;
+            --success: #25d366;
+            --gradient: linear-gradient(135deg, #ff2a74, #ff7a00, #8a2be2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Language Toggle & Header */
+        header {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .admin-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-family: 'Abhaya Libre', serif;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        .cta-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 42, 116, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Quick Info Bar */
+        .info-bar {
+            background: white;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-item i {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: white;
+            margin-top: 5px;
+        }
+
+        .status-open { background-color: #2ecc71; }
+        .status-closed { background-color: #e74c3c; }
+
+        /* Services Grid */
+        .services {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60%;
+            height: 4px;
+            background: var(--gradient);
+            position: absolute;
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 60px 5%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Direction and Forms Sections */
+        .interaction-area {
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            background: #f1f2f6;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .form-box h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-left: 5px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #20ba59;
+        }
+
+        .direction-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .dir-btn {
+            background: #4285f4;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            transition: background 0.2s;
+        }
+
+        .dir-btn:hover {
+            background: #3367d6;
+        }
+
+        /* Admin Dashboard View Modal */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .admin-content {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            padding: 25px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-admin {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
+
+        .stat-num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+
+        .log-table th, .log-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .log-table th {
+            background-color: #f1f2f6;
+        }
+
+        /* Floating Contact Buttons */
+        .floating-actions {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1500;
+        }
+
+        .float-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .float-wa { background-color: var(--success); }
+        .float-maps { background-color: #4285f4; }
+
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .interaction-area { grid-template-columns: 1fr; }
+            .stats-summary { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo-container">
+            <i class="fa-solid Mil fa-scissors logo-icon"></i>
+            <div class="logo-text">S.P Garment #28</div>
+        </div>
+        <div class="nav-controls">
+            <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">සිංහල</button>
+            <a href="#" class="admin-link" onclick="openAdminPanel()"><i class="fa-solid fa-lock"></i> Admin</a>
+        </div>
+    </header>
+
+    <!-- Hero banner -->
+    <section class="hero">
+        <h1 id="heroTitle">Exclusive Custom Tailoring</h1>
+        <p id="heroSubtitle">We create perfectly fitted, high-quality Ladies and Kids outfits uniquely crafted just for you.</p>
+        <a href="#inquiry-section" class="cta-btn" id="heroCta">Order/Inquire via WhatsApp</a>
+    </section>
+
+    <!-- Quick Store Info Bar -->
+    <div class="info-bar">
+        <div class="info-item">
+            <i class="fa-solid fa-clock"></i>
+            <h4 id="infoHoursTitle">Opening Hours</h4>
+            <p style="font-size: 0.9rem;">Mon-Sat: 8:30 AM - 5:30 PM<br>Sun: 9:30 AM - 5:30 PM</p>
+            <div id="storeBadge" class="status-badge">Checking...</div>
+        </div>
+        <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <h4 id="infoLocTitle">Our Location</h4>
+            <p style="font-size: 0.9rem;">Horampalla, Negombo<br>(Directions Link Available Below)</p>
+        </div>
+        <div class="info-item">
+            <i class="fa-solid fa-phone"></i>
+            <h4 id="infoContactTitle">Call Us Directly</h4>
+            <p style="font-size: 1rem; font-weight: bold; color: var(--primary);">011-2283254</p>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title" id="servicesTitle">Our Tailoring Services</h2>
+        <div class="grid">
+            <!-- 1. Ladies Dresses -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=400');"></div>
+                <div class="card-body">
+                    <h3 class="srv-title-1">Ladies Dresses</h3>
+                    <p class="srv-desc-1" style="font-size:0.9rem; color:#666;">Custom elegant frocks, maxis, and casual dresses tailored to perfection.</p>
+                </div>
+            </div>
+            <!-- 2. Ladies Blouses -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=400');"></div>
+                <div class="card-body">
+                    <h3 class="srv-title-2">Ladies Blouses</h3>
+                    <p class="srv-desc-2" style="font-size:0.9rem; color:#666;">Beautifully styled office blouses, crop tops, and design shirts.</p>
+                </div>
+            </div>
+            <!-- 3. Bridal Wear -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=400');"></div>
+                <div class="card-body">
+                    <h3 class="srv-title-3">Bridal Wear</h3>
+                    <p class="srv-desc-3" style="font-size:0.9rem; color:#666;">Special wedding frocks, bridesmaids attire, and party dresses.</p>
+                </div>
+            </div>
+            <!-- 4. Kids Frocks -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?q=80&w=400');"></div>
+                <div class="card-body">
+                    <h3 class="srv-title-4">Kids Frocks</h3>
+                    <p class="srv-desc-4" style="font-size:0.9rem; color:#666;">Pretty festive dresses and birthday frocks for baby girls.</p>
+                </div>
+            </div>
+            <!-- 5. Kids Wear -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?q=80&w=400');"></div>
+                <div class="card-body">
+                    <h3 class="srv-title-5">Kids Wear</h3>
+                    <p class="srv-desc-5" style="font-size:0.9rem; color:#666;">Comfortable custom daily outfits, shirts, and sets for your toddlers.</p>
+                </div>
+            </div>
+            <!-- 6. School Uniforms -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1503919545889-aef636e10ad4?q=80&w=400');"></div>
+                <div class="card-body">
+                    <h3 class="srv-title-6">School Uniforms</h3>
+                    <p class="srv-desc-6" style="font-size:0.9rem; color:#666;">Perfectly sized school uniforms and sports uniforms for girls and kids.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (with local storage support to add later) -->
+    <section class="gallery-section">
+        <h2 class="section-title" id="galleryTitle">Product Showcase Gallery</h2>
+        <p id="gallerySubtitle" style="color: #666; margin-bottom: 20px;">Explore designs crafted by S.P Garment</p>
+        <div class="gallery-grid" id="photoGallery">
+            <!-- Default Sample placeholders, admin can populate more or modify -->
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=300" alt="Sample 1"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=300" alt="Sample 2"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=300" alt="Sample 3"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?q=80&w=300" alt="Sample 4"></div>
+        </div>
+    </section>
+
+    <!-- Location & Interactive Form Elements Combo Area -->
+    <div class="interaction-area">
+        
+        <!-- Get Directions Panel -->
+        <div class="direction-box">
+            <div>
+                <h3 id="dirBoxTitle"><i class="fa-solid fa-map-location-dot"></i> Find Us On Maps</h3>
+                <p id="dirBoxDesc" style="color: #555; font-size: 0.95rem; margin-top: 15px;">
+                    We are located comfortably at <strong>Horampalla, Negombo</strong>. Click the smart button below to launch Google Maps directly on your iPhone, Android Mobile, or Desktop Computer with optimized route directions.
+                </p>
+                <!-- Universal Map Deep Link -->
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Horampalla,+Negombo" target="_blank" class="dir-btn" onclick="trackInteraction('Directions Clicked')">
+                    <i class="fa-solid fa-diamond-turn-right"></i> <span id="dirBtnText">Get Accurate Directions Now</span>
+                </a>
+            </div>
+            <div style="font-size: 0.8rem; color:#888; border-top: 1px solid #eee; padding-top: 10px;">
+                * Detects phone and opens native Google Maps app automatically.
+            </div>
+        </div>
+
+        <!-- Info & WhatsApp Order/Feedback Form Box -->
+        <div class="form-box" id="inquiry-section">
+            <h3 id="formTitle">Send Custom Info & Order</h3>
+            <form id="waForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label id="lblFormType" for="formType">Select Request Type</label>
+                    <select id="formType" required>
+                        <option value="Order & Measurement Inquiry">Order Placement & Measurement Inquiry</option>
+                        <option value="General Feedback">Customer Satisfaction Feedback</option>
+                        <option value="Price/Quotations Ask">Price Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label id="lblName" for="custName">Your Full Name</label>
+                    <input type="text" id="custName" placeholder="e.g., Dilini Perera" required>
+                </div>
+                <div class="form-group">
+                    <label id="lblCloth" for="clothType">Garment Category</label>
+                    <select id="clothType">
+                        <option value="Ladies Dress / Frock">Ladies Dress / Frock</option>
+                        <option value="Ladies Blouse">Ladies Blouse</option>
+                        <option value="Bridal Gown / Dress">Bridal Wear</option>
+                        <option value="Kids Wear">Kids Frock / Wear</option>
+                        <option value="School Uniform">School Uniform</option>
+                        <option value="Other Design">Other Tailoring</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label id="lblMsg" for="custMessage">Detailed Specifications / Feedback</label>
+                    <textarea id="custMessage" rows="4" placeholder="Enter measurements, custom design requests or details here..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fa-brands fa-whatsapp"></i> <span id="btnSubmitText">Submit Directly via WhatsApp</span>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Admin Panel Modal View -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-content">
+            <span class="close-admin" onclick="closeAdminPanel()">&times;</span>
+            <h2 style="border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 15px;"><i class="fa-solid fa-gauge"></i> Live Website Control Dashboard</h2>
+            
+            <div class="stats-summary">
+                <div class="stat-card">
+                    <div class="stat-num" id="statViews">0</div>
+                    <div style="font-size:0.85rem; color:#555;">Total Web Traffic Count (Hits)</div>
+                </div>
+                <div class="stat-card" style="border-color: var(--success);">
+                    <div class="stat-num" id="statInteractions">0</div>
+                    <div style="font-size:0.85rem; color:#555;">Action/Click Engagements</div>
+                </div>
+            </div>
+
+            <!-- Image Management Portal Area -->
+            <div style="background: #f8f9fa; padding:15px; border-radius:10px; margin-bottom:20px;">
+                <h4 style="margin-bottom:10px;"><i class="fa-solid fa-image"></i> Quick Cloud Image Sync (R2 Links)</h4>
+                <p style="font-size: 0.8rem; color:#555; margin-bottom:10px;">Paste any image web URLs (Cloudflare R2 links, PostImages, Imgur links etc) to instantly add photos to your front gallery.</p>
+                <div style="display:flex; gap:10px;">
+                    <input type="text" id="newImgUrl" placeholder="https://your-r2-bucket.com/photo1.jpg" style="flex:1; padding:8px; border:1px solid #ccc; border-radius:5px;">
+                    <button onclick="addNewAdminImage()" style="background:var(--accent); color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; font-weight:600;">Add Image</button>
+                </div>
+                <button onclick="clearAdminImages()" style="background:#e74c3c; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer; font-size:0.75rem; margin-top:8px;">Reset Custom Gallery</button>
+            </div>
+
+            <h4>Recent Dynamic Audit Activity Logs</h4>
+            <div style="overflow-x:auto;">
+                <table class="log-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Recorded Track Metric Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logTableBody">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Persistent Floating Fixed Buttons -->
+    <div class="floating-actions">
+        <a href="https://wa.me/94768318149" target="_blank" class="float-btn float-wa" onclick="trackInteraction('Floating WA Clicked')" title="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Horampalla,+Negombo" target="_blank" class="float-btn float-maps" onclick="trackInteraction('Floating Maps Clicked')" title="Get Route Directions">
+            <i class="fa-solid fa-location-arrow"></i>
+        </a>
+    </div>
+
+    <!-- Footer Summary -->
+    <footer>
+        <p>&copy; 2026 S.P Garment #28 Tailors - Horampalla, Negombo. All Rights Reserved.</p>
+        <p style="font-size: 0.75rem; margin-top: 5px; color: #666;">Powered by GitHub Pages. Dynamic state tracking enabled.</p>
+    </footer>
+
+    <!-- Comprehensive Operations Script Logic -->
+    <script>
+        // Centralized App State Values
+        let currentLang = 'EN'; // EN or SI
+        const WHATSAPP_NUMBER = "94768318149"; // Correct international format for +94768318149
+
+        // Dual-Language Localization Mapping Object
+        const textContent = {
+            EN: {
+                heroTitle: "Exclusive Custom Tailoring",
+                heroSubtitle: "We create perfectly fitted, high-quality Ladies and Kids outfits uniquely crafted just for you.",
+                heroCta: "Order / Inquire via WhatsApp",
+                infoHoursTitle: "Opening Hours",
+                infoLocTitle: "Our Location",
+                infoContactTitle: "Call Us Directly",
+                servicesTitle: "Our Tailoring Services",
+                galleryTitle: "Product Showcase Gallery",
+                gallerySubtitle: "Explore designs crafted by S.P Garment",
+                dirBoxTitle: "Find Us On Maps",
+                dirBoxDesc: "We are located comfortably at Horampalla, Negombo. Click the smart button below to launch Google Maps directly on your iPhone, Android Mobile, or Desktop Computer with optimized route directions.",
+                dirBtnText: "Get Accurate Directions Now",
+                formTitle: "Send Custom Info & Order",
+                lblFormType: "Select Request Type",
+                lblName: "Your Full Name",
+                lblCloth: "Garment Category",
+                lblMsg: "Detailed Specifications / Feedback",
+                btnSubmitText: "Submit Directly via WhatsApp",
+                // Services Array Labels
+                srvTitle1: "Ladies Dresses", srvDesc1: "Custom elegant frocks, maxis, and casual dresses tailored to perfection.",
+                srvTitle2: "Ladies Blouses", srvDesc2: "Beautifully styled office blouses, crop tops, and design shirts.",
+                srvTitle3: "Bridal Wear", srvDesc3: "Special wedding frocks, bridesmaids attire, and party dresses.",
+                srvTitle4: "Kids Frocks", srvDesc4: "Pretty festive dresses and birthday frocks for baby girls.",
+                srvTitle5: "Kids Wear", srvDesc5: "Comfortable custom daily outfits, shirts, and sets for your toddlers.",
+                srvTitle6: "School Uniforms", srvDesc6: "Perfectly sized school uniforms and sports uniforms for girls and kids."
+            },
+            SI: {
+                heroTitle: "විශිෂ්ඨ නිමාවෙන් යුත් මසාදීම්",
+                heroSubtitle: "කාන්තා සහ කුඩා දරුවන් සඳහාම වෙන්වූ, උසස්ම තත්ත්වයේ ඇඳුම් ඔබගේ කැමැත්ත පරිදි මසා දෙනු ලැබේ.",
+                heroCta: "WhatsApp මඟින් ඇණවුම් කරන්න",
+                infoHoursTitle: "විවෘත වේලාවන්",
+                infoLocTitle: "අපගේ ස්ථානය",
+                infoContactTitle: "දුරකථන අංකය",
+                servicesTitle: "අපගේ මසාදීම් සේවාවන්",
+                galleryTitle: "නිර්මාණ එකතුව",
+                gallerySubtitle: "S.P Garment වෙතින් මසන ලද ඇඳුම් මෝස්තර කිහිපයක්",
+                dirBoxTitle: "සිතියම මඟින් අපව සොයාගන්න",
+                dirBoxDesc: "අපගේ ඇඟලුම් හල හොරම්පල්ල, මීගමුව ප්‍රදේශයේ පිහිටා ඇත. ඔබගේ ජංගම දුරකථනයෙන් හෝ පරිගණකයෙන් නිවැරදිම මාර්ගය සොයාගැනීමට පහත බොත්තම ක්ලික් කරන්න.",
+                dirBtnText: "දැන්ම මාර්ගය ලබාගන්න",
+                formTitle: "විස්තර සහ ඇණවුම් අප වෙත එවන්න",
+                lblFormType: "අවශ්‍යතාවය තෝරන්න",
+                lblName: "ඔබගේ සම්පූර්ණ නම",
+                lblCloth: "ඇඳුම් වර්ගය",
+                lblMsg: "විස්තර සහ වෙනත් කරුණු",
+                btnSubmitText: "WhatsApp මඟින් ඍජුවම යොමු කරන්න",
+                // Services Array Labels
+                srvTitle1: "කාන්තා ගවුම්", srvDesc1: "ලස්සන මෝස්තර වල සාමාන්‍ය සහ විශේෂ උත්සව සඳහා ගවුම්.",
+                srvTitle2: "කාන්තා බ්ලවුස්", srvDesc2: "කාර්යාලීය සහ නවීන විලාසිතාවේ කාන්තා බ්ලවුස් ඇඳුම්.",
+                srvTitle3: "මනාලියන්ගේ ඇඳුම්", srvDesc3: "මනාලියන්ට සහ දෙවැනි මනාලියන්ට අවශ්‍ය උත්සව ඇඳුම් මසාදීම.",
+                srvTitle4: "ළමා ගවුම්", srvDesc4: "කුඩා ගැහැණු ළමුන් සඳහා අලංකාර උපන්දින සහ උත්සව ගවුම් වර්ග.",
+                srvTitle5: "ළමා ඇඳුම්", srvDesc5: "කුඩා දරුවන්ට සුවපහසු දෛනික ඇඳුම් කට්ටල සහ කලිසම්, ෂර්ට් වර්ග.",
+                srvTitle6: "පාසල් නිල ඇඳුම්", srvDesc6: "නිවැරදි මිමි වලට අනුව මසන ලද කදිම පාසල් සහ ක්‍රීඩා නිල ඇඳුම්."
+            }
+        };
+
+        // Initialize Application & Visitor Logs Configuration
+        window.addEventListener('DOMContentLoaded', () => {
+            // 1. Core Traffic Visitor counter tracker execution
+            let totalHits = localStorage.getItem('sp_web_views') || 0;
+            totalHits = parseInt(totalHits) + 1;
+            localStorage.setItem('sp_web_views', totalHits);
+
+            // Add automated initialization audit view logs
+            addAuditLog("Visitor landed on the homepage via " + (navigator.userAgent.includes("Mobi") ? "Mobile Device" : "PC / Desktop"));
+
+            // 2. Real-time Store Opening Hours Status Engine Logic
+            checkStoreStatus();
+
+            // 3. Load dynamic cloud images uploaded inside admin mode
+            renderGallery();
+        });
+
+        // Function tracking customized analytics inside localStorage
+        function trackInteraction(actionType) {
+            let count = localStorage.getItem('sp_interactions') || 0;
+            count = parseInt(count) + 1;
+            localStorage.setItem('sp_interactions', count);
+            addAuditLog("Action trigger execution: " + actionType);
+        }
+
+        // Live Operational Shop Time Logic Engine
+        function checkStoreStatus() {
+            const badge = document.getElementById('storeBadge');
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            const currentTimeDec = hour + (minute / 60);
+
+            let isOpen = false;
+            
+            if (day === 0) { // Sunday operational check (9:30 AM - 5:30 PM)
+                if (currentTimeDec >= 9.5 && currentTimeDec <= 17.5) isOpen = true;
+            } else { // Monday to Saturday operational check (8:30 AM - 5:30 PM)
+                if (currentTimeDec >= 8.5 && currentTimeDec <= 17.5) isOpen = true;
+            }
+
+            if (isOpen) {
+                badge.innerText = currentLang === 'EN' ? "● WE ARE OPEN NOW" : "● අප දැනට විවෘතයි";
+                badge.className = "status-badge status-open";
+            } else {
+                badge.innerText = currentLang === 'EN' ? "● SHOP CLOSED NOW" : "● අප දැනට වසා ඇත";
+                badge.className = "status-badge status-closed";
+            }
+        }
+
+        // Language Switch Interfacer
+        function toggleLanguage() {
+            currentLang = currentLang === 'EN' ? 'SI' : 'EN';
+            document.getElementById('langBtn').innerText = currentLang === 'EN' ? 'සිංහල' : 'English';
+            
+            // Translate static elements safely
+            const labels = textContent[currentLang];
+            for (let key in labels) {
+                const element = document.getElementById(key);
+                if (element) element.innerText = labels[key];
+            }
+
+            // Translate dynamically loaded class structural titles manually
+            document.querySelector('.srv-title-1').innerText = labels.srvTitle1;
+            document.querySelector('.srv-desc-1').innerText = labels.srvDesc1;
+            document.querySelector('.srv-title-2').innerText = labels.srvTitle2;
+            document.querySelector('.srv-desc-2').innerText = labels.srvDesc2;
+            document.querySelector('.srv-title-3').innerText = labels.srvTitle3;
+            document.querySelector('.srv-desc-3').innerText = labels.srvDesc3;
+            document.querySelector('.srv-title-4').innerText = labels.srvTitle4;
+            document.querySelector('.srv-desc-4').innerText = labels.srvDesc4;
+            document.querySelector('.srv-title-5').innerText = labels.srvTitle5;
+            document.querySelector('.srv-desc-5').innerText = labels.srvDesc5;
+            document.querySelector('.srv-title-6').innerText = labels.srvTitle6;
+            document.querySelector('.srv-desc-6').innerText = labels.srvDesc6;
+
+            checkStoreStatus();
+            addAuditLog(`Language toggled switcher to: ${currentLang}`);
+        }
+
+        // Send feedback & configuration parameters straight to WhatsApp Link Generator
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            trackInteraction('Form Submission WhatsApp API Button Pressed');
+
+            const reqType = document.getElementById('formType').value;
+            const name = document.getElementById('custName').value;
+            const cloth = document.getElementById('clothType').value;
+            const message = document.getElementById('custMessage').value;
+
+            // Formulate neat WhatsApp Message payload template
+            const messageText = `*S.P Garment %2328 Website Submission*
+
+` +
+                                `• *Type:* ${reqType}
+` +
+                                `• *Customer Name:* ${name}
+` +
+                                `• *Category Choice:* ${cloth}
+` +
+                                `• *Details:* ${message}`;
+            
+            // Generate clean target redirect URL link
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(messageText)}`;
+            
+            // Execute seamless redirection tab window framework
+            window.open(url, '_blank');
+        }
+
+        // Interactive Internal Audit Logs Engine
+        function addAuditLog(textStr) {
+            let currentLogs = JSON.parse(localStorage.getItem('sp_audit_logs')) || [];
+            const timestamp = new Date().toLocaleString();
+            currentLogs.unshift({ time: timestamp, text: textStr });
+            // Maintain layout boundary limit to top 40 clean elements
+            if (currentLogs.length > 40) currentLogs.pop();
+            localStorage.setItem('sp_audit_logs', JSON.stringify(currentLogs));
+        }
+
+        // Admin Management View Layout Portals
+        function openAdminPanel() {
+            document.getElementById('adminModal').style.display = 'flex';
+            
+            // Sync live numeric stats to admin text boxes
+            document.getElementById('statViews').innerText = localStorage.getItem('sp_web_views') || 1;
+            document.getElementById('statInteractions').innerText = localStorage.getItem('sp_interactions') || 0;
+
+            // Render live logs data table list elements
+            const tbody = document.getElementById('logTableBody');
+            tbody.innerHTML = '';
+            const logs = JSON.parse(localStorage.getItem('sp_audit_logs')) || [];
+            
+            if(logs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="2" style="text-align:center; color:#999;">No actions tracked yet.</td></tr>';
+            } else {
+                logs.forEach(item => {
+                    tbody.innerHTML += `<tr><td><strong>${item.time}</strong></td><td>${item.text}</td></tr>`;
+                });
+            }
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        // Custom Cloud R2 Image Array dynamic insertions handlers
+        function renderGallery() {
+            const galleryGrid = document.getElementById('photoGallery');
+            const customImages = JSON.parse(localStorage.getItem('sp_custom_images')) || [];
+            
+            // Keep foundational design elements intact, but add custom uploads upfront
+            if (customImages.length > 0) {
+                // Clear and fully reconstruct gallery with new custom pictures
+                galleryGrid.innerHTML = '';
+                customImages.forEach(imgUrl => {
+                    galleryGrid.innerHTML += `<div class="gallery-item"><img src="${imgUrl}" onerror="this.src='https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=200'" alt="Tailored Wear"></div>`;
+                });
+                // Supplement with standard fallback if uploads are very small
+                if (customImages.length < 3) {
+                    galleryGrid.innerHTML += `<div class="gallery-item"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=300"></div>`;
+                }
+            }
+        }
+
+        function addNewAdminImage() {
+            const inputField = document.getElementById('newImgUrl');
+            const urlVal = inputField.value.trim();
+            if(!urlVal) return alert("Please fill/paste a valid R2 file URL link.");
+
+            let customImages = JSON.parse(localStorage.getItem('sp_custom_images')) || [];
+            customImages.unshift(urlVal);
+            localStorage.setItem('sp_custom_images', JSON.stringify(customImages));
+            
+            inputField.value = '';
+            renderGallery();
+            addAuditLog("Admin uploaded new gallery item photo URL link");
+            alert("New photo synced successfully! Check your gallery below.");
+        }
+
+        function clearAdminImages() {
+            localStorage.removeItem('sp_custom_images');
+            location.reload();
+        }
+    </script>
+</body>
+</html>
