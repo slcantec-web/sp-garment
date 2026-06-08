@@ -897,9 +897,40 @@
             localStorage.setItem('sp_audit_logs', JSON.stringify(currentLogs));
         }
 
-        // Admin Management View Layout Portals
+        // Admin Management View Layout Portals with Password Protection
         function openAdminPanel() {
+            // 1. Prompt for password before showing the panel
+            const accessPassword = prompt("Please enter the Secure Admin Password to login:");
+            
+            // You can change 'SP28admin' to whatever password you want!
+            if (accessPassword !== "SP28admin") {
+                alert("Incorrect Admin Password! Access Denied.");
+                addAuditLog("Failed unauthorized Admin login attempt blocked.");
+                return; // Stop execution right here
+            }
+
+            // 2. If the password is correct, proceed with your original dashboard code
             document.getElementById('adminModal').style.display = 'flex';
+            
+            // Sync live numeric stats to admin text boxes
+            document.getElementById('statViews').innerText = localStorage.getItem('sp_web_views') || 1;
+            document.getElementById('statInteractions').innerText = localStorage.getItem('sp_interactions') || 0;
+
+            // Render live logs data table list elements
+            const tbody = document.getElementById('logTableBody');
+            tbody.innerHTML = '';
+            const logs = JSON.parse(localStorage.getItem('sp_audit_logs')) || [];
+            
+            if(logs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="2" style="text-align:center; color:#999;">No actions tracked yet.</td></tr>';
+            } else {
+                logs.forEach(item => {
+                    tbody.innerHTML += `<tr><td><strong>${item.time}</strong></td><td>${item.text}</td></tr>`;
+                });
+            }
+            
+            addAuditLog("Admin successfully authenticated and logged in.");
+        }
             
             // Sync live numeric stats to admin text boxes
             document.getElementById('statViews').innerText = localStorage.getItem('sp_web_views') || 1;
