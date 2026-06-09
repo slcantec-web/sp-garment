@@ -1,922 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S.P Garment #28 | Custom Tailoring</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Abhaya+Libre:wght@700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #ff2a74;
-            --secondary: #ff7a00;
-            --accent: #8a2be2;
-            --dark: #121212;
-            --light: #f8f9fa;
-            --success: #25d366;
-            --gradient: linear-gradient(135deg, #ff2a74, #ff7a00, #8a2be2);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-
-        /* Language Toggle & Header */
-        header {
-            background: #fff;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .lang-btn {
-            background: var(--gradient);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: transform 0.2s;
-        }
-
-        .lang-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .admin-link {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-family: 'Abhaya Libre', serif;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            max-width: 600px;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-        }
-
-        .cta-btn {
-            background: var(--gradient);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(255, 42, 116, 0.4);
-            transition: transform 0.3s;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        /* Quick Info Bar */
-        .info-bar {
-            background: white;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .info-item i {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: white;
-            margin-top: 5px;
-        }
-
-        .status-open { background-color: #2ecc71; }
-        .status-closed { background-color: #e74c3c; }
-
-        /* Services Grid */
-        .services {
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 60%;
-            height: 4px;
-            background: var(--gradient);
-            position: absolute;
-            bottom: -10px;
-            left: 20%;
-            border-radius: 2px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-body h3 {
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            padding: 60px 5%;
-            background: #fff;
-            text-align: center;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 250px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Direction and Forms Sections */
-        .interaction-area {
-            padding: 60px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            background: #f1f2f6;
-        }
-
-        .form-box {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .form-box h3 {
-            margin-bottom: 20px;
-            font-size: 1.4rem;
-            border-left: 5px solid var(--primary);
-            padding-left: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--success);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.2s;
-        }
-
-        .submit-btn:hover {
-            background: #20ba59;
-        }
-
-        .direction-box {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .dir-btn {
-            background: #4285f4;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            transition: background 0.2s;
-        }
-
-        .dir-btn:hover {
-            background: #3367d6;
-        }
-
-        /* Admin Dashboard View Modal */
-        .admin-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .admin-content {
-            background: white;
-            width: 100%;
-            max-width: 800px;
-            border-radius: 15px;
-            padding: 25px;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .close-admin {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        .stats-summary {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .stat-card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border-top: 4px solid var(--accent);
-        }
-
-        .stat-num {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .log-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 0.85rem;
-        }
-
-        .log-table th, .log-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .log-table th {
-            background-color: #f1f2f6;
-        }
-
-        /* Floating Contact Buttons */
-        .floating-actions {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1500;
-        }
-
-        .float-btn {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-
-        .float-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .float-wa { background-color: var(--success); }
-        .float-maps { background-color: #4285f4; }
-
-        footer {
-            background: #111;
-            color: #aaa;
-            text-align: center;
-            padding: 25px;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Fixes */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1rem; }
-            .interaction-area { grid-template-columns: 1fr; }
-            .stats-summary { grid-template-columns: 1fr; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1a0533">
+<meta name="description" content="S.P. Garment - Custom Tailoring for Ladies and Kids in Horampalla, Negombo">
+<title>S.P. Garment | Custom Tailoring · Negombo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#e91e8c;--pink:#ff6eb4;--purple:#7c3aed;--gold:#f59e0b;--cream:#fff8f3;--dark:#1a0533;--text:#2d1b4e;--muted:#7c6b8a;--green:#22c55e}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Nunito",sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;transition:all 0.3s}
+nav.scrolled{background:rgba(26,5,51,0.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);padding:12px 24px}
+.nav-logo{font-family:"Playfair Display",serif;font-weight:700;color:#fff;font-size:1.1rem}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:20px}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.83rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--rose);color:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;font-weight:700;text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:var(--pink);transform:translateY(-1px)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s}
+.hero{min-height:100vh;background:linear-gradient(135deg,#1a0533 0%,#3d0f6b 40%,#6b1e8c 70%,#c2185b 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:80px 20px 60px}
+.deco{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.25;pointer-events:none}
+.d1{width:600px;height:600px;background:#e91e8c;top:-200px;left:-150px}
+.d2{width:500px;height:500px;background:#7c3aed;bottom:-150px;right:-150px}
+.d3{width:350px;height:350px;background:#f59e0b;top:50%;left:50%;transform:translate(-50%,-50%)}
+.logo-wrap{position:relative;z-index:1;margin-bottom:28px;animation:fadeDown 0.8s ease both}
+.logo-icon{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--gold));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 0 0 4px rgba(255,255,255,0.15),0 20px 40px rgba(233,30,140,0.4);font-size:40px}
+.logo-name{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,6vw,3.5rem);font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em}
+.logo-name span{color:var(--gold)}
+.logo-tag{font-size:0.85rem;color:rgba(255,255,255,0.65);letter-spacing:0.2em;text-transform:uppercase;margin-top:8px;font-weight:300}
+.logo-si{font-size:1rem;color:rgba(255,255,255,0.55);margin-top:6px}
+.hero-desc{position:relative;z-index:1;max-width:520px;font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:32px;animation:fadeUp 0.8s 0.2s ease both}
+.hero-btns{position:relative;z-index:1;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s 0.4s ease both}
+.btn{padding:13px 26px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;border:none;transition:all 0.25s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:"Nunito",sans-serif}
+.btn-p{background:linear-gradient(135deg,var(--rose),var(--purple));color:#fff;box-shadow:0 8px 24px rgba(233,30,140,0.4)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(233,30,140,0.5)}
+.btn-o{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.3);backdrop-filter:blur(10px)}
+.btn-o:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px)}
+.scroll-ind{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:1;animation:fadeUp 1s 0.8s ease both}
+.scroll-ind span{font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase}
+.sdot{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent)}
+section{padding:72px 20px}
+.container{max-width:1100px;margin:0 auto}
+.slabel{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:8px}
+.stitle{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;line-height:1.15;margin-bottom:14px}
+.stitle span{color:var(--rose)}
+.ssub{font-size:0.95rem;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:44px}
+/* SERVICES */
+.services{background:#fff}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.sc{background:linear-gradient(135deg,#fff8fc,#fdf0ff);border:1px solid rgba(233,30,140,0.1);border-radius:18px;padding:26px 22px;transition:all 0.3s}
+.sc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(233,30,140,0.15);border-color:rgba(233,30,140,0.3)}
+.sci{font-size:2.4rem;margin-bottom:12px}
+.sct{font-family:"Playfair Display",serif;font-size:1rem;font-weight:700;margin-bottom:4px}
+.scsi{font-size:0.78rem;color:var(--rose);margin-bottom:8px}
+.scd{font-size:0.8rem;color:var(--muted);line-height:1.6}
+/* GALLERY */
+.gallery-section{background:linear-gradient(135deg,#fdf0ff,#fff8f3)}
+.gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.gi{aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#f3e8ff,#fce7f3);position:relative;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s}
+.gi:hover{transform:scale(1.02);box-shadow:0 14px 36px rgba(233,30,140,0.2)}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.gi:hover img{transform:scale(1.05)}
+.go{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,5,51,0.8),transparent);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:12px}
+.gi:hover .go{opacity:1}
+.gc{color:#fff;font-size:0.75rem;font-weight:600}
+.gph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:0.75rem;text-align:center;padding:14px}
+.gph .ei{font-size:2.2rem}
+/* HOURS */
+.hours-section{background:#fff}
+.hg{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:580px}
+.hc{background:linear-gradient(135deg,#fdf0ff,#fff8f3);border:1px solid rgba(233,30,140,0.1);border-radius:14px;padding:18px}
+.hc h3{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.hr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(233,30,140,0.06);font-size:0.82rem}
+.hr:last-child{border-bottom:none}
+.hr .dy{color:var(--text);font-weight:500}
+.hr .tm{color:var(--rose);font-weight:600;font-size:0.78rem}
+.ob{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#16a34a;padding:6px 14px;border-radius:20px;font-size:0.76rem;font-weight:600;margin-bottom:18px}
+.od{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.7;transform:scale(1.3)}}
+/* LOCATION */
+.location-section{background:linear-gradient(135deg,#fdf0ff,#fff8f3)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.loc-info{display:flex;flex-direction:column;gap:14px}
+.loc-item{display:flex;align-items:flex-start;gap:12px;background:#fff;border-radius:14px;padding:16px;border:1px solid rgba(233,30,140,0.08)}
+.loc-item-icon{font-size:1.5rem;flex-shrink:0}
+.loc-item-text strong{display:block;font-size:0.85rem;font-weight:600;margin-bottom:2px}
+.loc-item-text span{font-size:0.78rem;color:var(--muted)}
+.dir-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--rose),var(--purple));color:#fff;padding:12px 22px;border-radius:50px;font-weight:700;font-size:0.85rem;text-decoration:none;transition:all 0.25s;box-shadow:0 8px 24px rgba(233,30,140,0.3)}
+.dir-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(233,30,140,0.4)}
+.map-embed{border-radius:16px;overflow:hidden;border:1px solid rgba(233,30,140,0.1);height:280px}
+.map-embed iframe{width:100%;height:100%;border:none}
+/* ENQUIRY FORM */
+.enquiry-section{background:#fff}
+.form-wrap{max-width:600px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:0.8rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group label span{color:var(--rose)}
+.form-input{width:100%;padding:12px 16px;border:1.5px solid rgba(233,30,140,0.15);border-radius:12px;font-family:"Nunito",sans-serif;font-size:0.85rem;color:var(--text);background:#fff;outline:none;transition:border-color 0.2s}
+.form-input:focus{border-color:var(--rose)}
+.form-input::placeholder{color:#bbb}
+textarea.form-input{resize:vertical;min-height:100px}
+select.form-input{cursor:pointer}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--rose),var(--purple));color:#fff;border:none;border-radius:12px;font-family:"Nunito",sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:8px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(233,30,140,0.35)}
+.form-note{font-size:0.75rem;color:var(--muted);margin-top:10px;text-align:center}
+.success-msg{display:none;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:16px;text-align:center;color:#16a34a;font-weight:600;margin-top:16px}
+.success-msg.show{display:block}
+/* CONTACT */
+.contact-section{background:linear-gradient(135deg,#1a0533 0%,#3d0f6b 50%,#6b1e8c 100%);color:#fff}
+.contact-section .slabel{color:var(--gold)}
+.contact-section .stitle{color:#fff}
+.contact-section .stitle span{color:var(--gold)}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:36px}
+.cc{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px;text-align:center;transition:all 0.3s;backdrop-filter:blur(10px)}
+.cc:hover{background:rgba(255,255,255,0.1);transform:translateY(-3px)}
+.cci{font-size:1.8rem;margin-bottom:10px}
+.ccl{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px}
+.ccv{font-size:0.9rem;font-weight:700;color:#fff}
+.ccv a{color:#fff;text-decoration:none}
+.ccv a:hover{color:var(--gold)}
+.wa{display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.3s;margin-top:28px;box-shadow:0 8px 24px rgba(37,211,102,0.3)}
+.wa:hover{background:#22c55e;transform:translateY(-2px)}
+footer{background:#0d0020;color:rgba(255,255,255,0.45);text-align:center;padding:22px 20px;font-size:0.76rem}
+footer strong{color:var(--rose)}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:all 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.show{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:12px;object-fit:contain}
+.lbc{position:fixed;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+  nav.menu-open .nav-links{display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:rgba(26,5,51,0.98);backdrop-filter:blur(20px);padding:20px;gap:14px;border-bottom:1px solid rgba(255,255,255,0.08)}
+  nav.menu-open .nav-cta{display:block;text-align:center;margin-top:6px}
+  .hg,.loc-grid,.form-row{grid-template-columns:1fr}
+  section{padding:56px 16px}
+  .gg{grid-template-columns:repeat(2,1fr)}
+  .map-embed{height:220px}
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <i class="fa-solid fa-scissors logo-icon"></i>
-            <div class="logo-text">S.P Garment #28</div>
-        </div>
-        <div class="nav-controls">
-            <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">සිංහල</button>
-            <a href="#" class="admin-link" onclick="openAdminPanel()"><i class="fa-solid fa-lock"></i> Admin</a>
-        </div>
-    </header>
+<div class="lightbox" id="lb" onclick="closeLB()">
+  <button class="lbc" onclick="closeLB()">&#x2715;</button>
+  <img id="lbImg" src="" alt="">
+</div>
 
-    <section class="hero">
-        <h1 id="heroTitle">Exclusive Custom Tailoring</h1>
-        <p id="heroSubtitle">We create perfectly fitted, high-quality Ladies and Kids outfits uniquely crafted just for you.</p>
-        <a href="#inquiry-section" class="cta-btn" id="heroCta">Order/Inquire via WhatsApp</a>
-    </section>
+<nav id="nav">
+  <div class="nav-logo">S.P.<span>Garment</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#hours">Hours</a>
+    <a href="#location">Location</a>
+    <a href="#enquiry">Enquiry</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="https://wa.me/94768318149" class="nav-cta" target="_blank">&#128222; WhatsApp</a>
+  <div class="nav-burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
 
-    <div class="info-bar">
-        <div class="info-item">
-            <i class="fa-solid fa-clock"></i>
-            <h4 id="infoHoursTitle">Opening Hours</h4>
-            <p style="font-size: 0.9rem;">Mon-Sat: 8:30 AM - 5:30 PM<br>Sun: 9:30 AM - 5:30 PM</p>
-            <div id="storeBadge" class="status-badge">Checking...</div>
-        </div>
-        <div class="info-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <h4 id="infoLocTitle">Our Location</h4>
-            <p style="font-size: 0.9rem;">Horampalla, Minuwangoda<br>(Directions Link Available Below)</p>
-        </div>
-        <div class="info-item">
-            <i class="fa-solid fa-phone"></i>
-            <h4 id="infoContactTitle">Call Us Directly</h4>
-            <p style="font-size: 1rem; font-weight: bold; color: var(--primary);">011-2283254</p>
-        </div>
+<div class="hero">
+  <div class="deco d1"></div><div class="deco d2"></div><div class="deco d3"></div>
+  <div class="logo-wrap">
+    <div class="logo-icon">&#9986;&#65039;</div>
+    <div class="logo-name">S.P. <span>Garment</span></div>
+    <div class="logo-tag">Custom Tailoring &middot; Negombo</div>
+    <div class="logo-si">&#3482;&#3535;&#3472;&#3530;&#3475;&#3535; &#3489;&#3535; &#3453;&#3512;&#3535; &#3462;&#3546;&#3512;&#3530; &#3512;&#3546;&#3523;&#3539;&#3512;</div>
+  </div>
+  <p class="hero-desc">Premium custom tailoring for <strong>Ladies &amp; Kids</strong> in Negombo, Sri Lanka.<br>Crafted with love, precision and care.</p>
+  <div class="hero-btns">
+    <a href="#gallery" class="btn btn-p">&#10024; View Our Work</a>
+    <a href="#enquiry" class="btn btn-o">&#128222; Send Enquiry</a>
+  </div>
+  <div class="scroll-ind"><span>Scroll</span><div class="sdot"></div></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="slabel reveal">What We Do</div>
+    <h2 class="stitle reveal">Our <span>Services</span></h2>
+    <p class="ssub reveal">Specializing in beautiful custom-made outfits for ladies and children.</p>
+    <div class="sg">
+      <div class="sc reveal"><div class="sci">&#128247;</div><div class="sct">Ladies Dresses</div><div class="scsi">&#3482;&#3535;&#3472;&#3530;&#3475;&#3535; &#3462;&#3546;&#3512;&#3530;</div><p class="scd">Custom-designed dresses tailored to your exact measurements.</p></div>
+      <div class="sc reveal"><div class="sci">&#128282;</div><div class="sct">Ladies Blouses</div><div class="scsi">&#3502;&#3530;&#3517;&#3515;&#3530;&#3523;&#3530; &#3512;&#3546;&#3523;&#3539;&#3512;</div><p class="scd">Elegant blouses crafted with precision for the perfect fit.</p></div>
+      <div class="sc reveal"><div class="sci">&#128112;</div><div class="sct">Bridal Wear</div><div class="scsi">&#3512;&#3546;&#3497;&#3530;&#3484;&#3517; &#3462;&#3546;&#3512;&#3530;</div><p class="scd">Beautifully crafted bridal outfits for your special day.</p></div>
+      <div class="sc reveal"><div class="sci">&#127872;</div><div class="sct">Kids Frocks</div><div class="scsi">&#3453;&#3512;&#3535; &#3462;&#3546;&#3512;&#3530;</div><p class="scd">Adorable frocks for little ones with soft quality fabrics.</p></div>
+      <div class="sc reveal"><div class="sci">&#127890;</div><div class="sct">School Uniforms</div><div class="scsi">&#3502;&#3535;&#3523;&#3517;&#3530; &#3462;&#3546;&#3512;&#3530;</div><p class="scd">Durable school uniforms tailored to fit perfectly.</p></div>
+      <div class="sc reveal"><div class="sci">&#129521;</div><div class="sct">Alterations</div><div class="scsi">&#3462;&#3546;&#3512;&#3530; &#3484;&#3517;&#3524;&#3474;&#3539;&#3512;</div><p class="scd">Expert alterations to give your outfits a new life.</p></div>
     </div>
+  </div>
+</section>
 
-    <section class="services" id="services">
-        <h2 class="section-title" id="servicesTitle">Our Tailoring Services</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=400');"></div>
-                <div class="card-body">
-                    <h3 class="srv-title-1">Ladies Dresses</h3>
-                    <p class="srv-desc-1" style="font-size:0.9rem; color:#666;">Custom elegant frocks, maxis, and casual dresses tailored to perfection.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=400');"></div>
-                <div class="card-body">
-                    <h3 class="srv-title-2">Ladies Blouses</h3>
-                    <p class="srv-desc-2" style="font-size:0.9rem; color:#666;">Beautifully styled office blouses, crop tops, and design shirts.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=400');"></div>
-                <div class="card-body">
-                    <h3 class="srv-title-3">Bridal Wear</h3>
-                    <p class="srv-desc-3" style="font-size:0.9rem; color:#666;">Special wedding frocks, bridesmaids attire, and party dresses.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?q=80&w=400');"></div>
-                <div class="card-body">
-                    <h3 class="srv-title-4">Kids Frocks</h3>
-                    <p class="srv-desc-4" style="font-size:0.9rem; color:#666;">Pretty festive dresses and birthday frocks for baby girls.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?q=80&w=400');"></div>
-                <div class="card-body">
-                    <h3 class="srv-title-5">Kids Wear</h3>
-                    <p class="srv-desc-5" style="font-size:0.9rem; color:#666;">Comfortable custom daily outfits, shirts, and sets for your toddlers.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1503919545889-aef636e10ad4?q=80&w=400');"></div>
-                <div class="card-body">
-                    <h3 class="srv-title-6">School Uniforms</h3>
-                    <p class="srv-desc-6" style="font-size:0.9rem; color:#666;">Perfectly sized school uniforms and sports uniforms for girls and kids.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery-section">
-        <h2 class="section-title" id="galleryTitle">Product Showcase Gallery</h2>
-        <p id="gallerySubtitle" style="color: #666; margin-bottom: 20px;">Explore designs crafted by S.P Garment</p>
-        <div class="gallery-grid" id="photoGallery">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=300" alt="Sample 1"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=300" alt="Sample 2"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=300" alt="Sample 3"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?q=80&w=300" alt="Sample 4"></div>
-        </div>
-    </section>
-
-    <div class="interaction-area">
-        
-        <div class="direction-box">
-            <div>
-                <h3 id="dirBoxTitle"><i class="fa-solid fa-map-location-dot"></i> Find Us On Maps</h3>
-                <p id="dirBoxDesc" style="color: #555; font-size: 0.95rem; margin-top: 15px;">
-                    We are located comfortably at <strong>Horampalla, Minuwangoda</strong>. Click the smart button below to launch Google Maps directly on your iPhone, Android Mobile, or Desktop Computer with optimized route directions.
-                </p>
-                <a href="https://maps.app.goo.gl/6cwZULk4gZ9md2ut9" target="_blank" class="dir-btn" onclick="trackInteraction('Directions Clicked')">
-                    <i class="fa-solid fa-diamond-turn-right"></i> <span id="dirBtnText">Get Accurate Directions Now</span>
-                </a>
-            </div>
-            <div style="font-size: 0.8rem; color:#888; border-top: 1px solid #eee; padding-top: 10px;">
-                * Detects phone and opens native Google Maps app automatically.
-            </div>
-        </div>
-
-        <div class="form-box" id="inquiry-section">
-            <h3 id="formTitle">Send Custom Info & Order</h3>
-            <form id="waForm" onsubmit="sendToWhatsApp(event)">
-                <div class="form-group">
-                    <label id="lblFormType" for="formType">Select Request Type</label>
-                    <select id="formType" required>
-                        <option value="Order & Measurement Inquiry">Order Placement & Measurement Inquiry</option>
-                        <option value="General Feedback">Customer Satisfaction Feedback</option>
-                        <option value="Price/Quotations Ask">Price Inquiry</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label id="lblName" for="custName">Your Full Name</label>
-                    <input type="text" id="custName" placeholder="e.g., Dilini Perera" required>
-                </div>
-                <div class="form-group">
-                    <label id="lblCloth" for="clothType">Garment Category</label>
-                    <select id="clothType">
-                        <option value="Ladies Dress / Frock">Ladies Dress / Frock</option>
-                        <option value="Ladies Blouse">Ladies Blouse</option>
-                        <option value="Bridal Gown / Dress">Bridal Wear</option>
-                        <option value="Kids Wear">Kids Frock / Wear</option>
-                        <option value="School Uniform">School Uniform</option>
-                        <option value="Other Design">Other Tailoring</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label id="lblMsg" for="custMessage">Detailed Specifications / Feedback</label>
-                    <textarea id="custMessage" rows="4" placeholder="Enter measurements, custom design requests or details here..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fa-brands fa-whatsapp"></i> <span id="btnSubmitText">Submit Directly via WhatsApp</span>
-                </button>
-            </form>
-        </div>
-
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="slabel reveal">Our Work</div>
+    <h2 class="stitle reveal">Photo <span>Gallery</span></h2>
+    <p class="ssub reveal">Tap any photo to view full size.</p>
+    <div class="gg" id="galleryGrid">
+      <div class="gi reveal"><div class="gph"><div class="ei">&#128247;</div><span>Photos coming soon</span></div></div>
+      <div class="gi reveal"><div class="gph"><div class="ei">&#128247;</div><span>Ladies Collection</span></div></div>
+      <div class="gi reveal"><div class="gph"><div class="ei">&#127872;</div><span>Kids Collection</span></div></div>
+      <div class="gi reveal"><div class="gph"><div class="ei">&#128112;</div><span>Bridal Wear</span></div></div>
     </div>
+  </div>
+</section>
 
-    <div class="admin-modal" id="adminModal">
-        <div class="admin-content">
-            <span class="close-admin" onclick="closeAdminPanel()">×</span>
-            <h2 style="border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 15px;"><i class="fa-solid fa-gauge"></i> Live Website Control Dashboard</h2>
-            
-            <div class="stats-summary">
-                <div class="stat-card">
-                    <div class="stat-num" id="statViews">0</div>
-                    <div style="font-size:0.85rem; color:#555;">Total Web Traffic Count (Hits)</div>
-                </div>
-                <div class="stat-card" style="border-color: var(--success);">
-                    <div class="stat-num" id="statInteractions">0</div>
-                    <div style="font-size:0.85rem; color:#555;">Action/Click Engagements</div>
-                </div>
-            </div>
+<!-- HOURS -->
+<section class="hours-section" id="hours">
+  <div class="container">
+    <div class="slabel reveal">Visit Us</div>
+    <h2 class="stitle reveal">Opening <span>Hours</span></h2>
+    <div class="ob reveal"><span class="od"></span><span id="openText">Checking...</span></div>
+    <div class="hg reveal">
+      <div class="hc">
+        <h3>Mon &ndash; Sat</h3>
+        <div class="hr"><span class="dy">Monday</span><span class="tm">8:30 AM &ndash; 5:30 PM</span></div>
+        <div class="hr"><span class="dy">Tuesday</span><span class="tm">8:30 AM &ndash; 5:30 PM</span></div>
+        <div class="hr"><span class="dy">Wednesday</span><span class="tm">8:30 AM &ndash; 5:30 PM</span></div>
+        <div class="hr"><span class="dy">Thursday</span><span class="tm">8:30 AM &ndash; 5:30 PM</span></div>
+        <div class="hr"><span class="dy">Friday</span><span class="tm">8:30 AM &ndash; 5:30 PM</span></div>
+        <div class="hr"><span class="dy">Saturday</span><span class="tm">8:30 AM &ndash; 5:30 PM</span></div>
+      </div>
+      <div class="hc">
+        <h3>Sunday</h3>
+        <div class="hr"><span class="dy">Sunday</span><span class="tm">9:30 AM &ndash; 5:30 PM</span></div>
+        <p style="margin-top:14px;font-size:0.76rem;color:var(--muted);line-height:1.6">&#9888;&#65039; Hours may vary on public holidays.<br>Call us to confirm.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div style="background: #f8f9fa; padding:15px; border-radius:10px; margin-bottom:20px;">
-                <h4 style="margin-bottom:10px;"><i class="fa-solid fa-image"></i> Quick Cloud Image Sync (R2 Links)</h4>
-                <p style="font-size: 0.8rem; color:#555; margin-bottom:10px;">Paste any image web URLs to instantly add photos to your front gallery.</p>
-                <div style="display:flex; gap:10px;">
-                    <input type="text" id="newImgUrl" placeholder="https://your-r2-bucket.com/photo1.jpg" style="flex:1; padding:8px; border:1px solid #ccc; border-radius:5px;">
-                    <button onclick="addNewAdminImage()" style="background:var(--accent); color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; font-weight:600;">Add Image</button>
-                </div>
-                <button onclick="clearAdminImages()" style="background:#e74c3c; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer; font-size:0.75rem; margin-top:8px;">Reset Custom Gallery</button>
-            </div>
-
-            <h4>Recent Dynamic Audit Activity Logs</h4>
-            <div style="overflow-x:auto;">
-                <table class="log-table">
-                    <thead>
-                        <tr>
-                            <th>Timestamp</th>
-                            <th>Recorded Track Metric Activity</th>
-                        </tr>
-                    </thead>
-                    <tbody id="logTableBody">
-                        </tbody>
-                </table>
-            </div>
+<!-- LOCATION -->
+<section class="location-section" id="location">
+  <div class="container">
+    <div class="slabel reveal">Find Us</div>
+    <h2 class="stitle reveal">Our <span>Location</span></h2>
+    <p class="ssub reveal">Come visit us at our shop in Horampalla, Negombo.</p>
+    <div class="loc-grid">
+      <div class="loc-info reveal">
+        <div class="loc-item">
+          <div class="loc-item-icon">&#128205;</div>
+          <div class="loc-item-text">
+            <strong>S.P. Garment #28</strong>
+            <span>Horampalla, Negombo<br>Sri Lanka</span>
+          </div>
         </div>
+        <div class="loc-item">
+          <div class="loc-item-icon">&#128222;</div>
+          <div class="loc-item-text">
+            <strong>Phone</strong>
+            <span><a href="tel:0112283254" style="color:var(--rose)">011-2283254</a></span>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-item-icon">&#128339;</div>
+          <div class="loc-item-text">
+            <strong>Hours Today</strong>
+            <span id="todayHours">Mon&ndash;Sat: 8:30AM&ndash;5:30PM | Sun: 9:30AM&ndash;5:30PM</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=7.1860292,79.9751599" target="_blank" class="dir-btn">
+            &#128205; Get Directions
+          </a>
+          <a href="https://maps.app.goo.gl/Hp3yCWNKvfK4gRJy8" target="_blank" class="dir-btn" style="background:linear-gradient(135deg,#1a73e8,#0d47a1)">
+            &#128247; View on Maps
+          </a>
+        </div>
+      </div>
+      <div class="map-embed reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.8!2d79.9751599!3d7.1860292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e5be6b017045%3A0x3cec1c6693e26eb8!2sS.P%20Garment%20%23%2028!5e0!3m2!1sen!2slk!4v1" allowfullscreen loading="lazy"></iframe>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="floating-actions">
-        <a href="https://wa.me/94768318149" target="_blank" class="float-btn float-wa" onclick="trackInteraction('Floating WA Clicked')" title="Chat on WhatsApp">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="https://maps.app.goo.gl/nULBrJDZicchEsGG8" target="_blank" class="float-btn float-maps" onclick="trackInteraction('Floating Maps Clicked')" title="Get Route Directions">
-            <i class="fa-solid fa-location-arrow"></i>
-        </a>
+<!-- ENQUIRY FORM -->
+<section class="enquiry-section" id="enquiry">
+  <div class="container">
+    <div class="slabel reveal">Get In Touch</div>
+    <h2 class="stitle reveal">Send an <span>Enquiry</span></h2>
+    <p class="ssub reveal">Fill in your details and we will contact you via WhatsApp within 24 hours.</p>
+    <div class="form-wrap reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name <span>*</span></label>
+          <input class="form-input" id="fName" type="text" placeholder="e.g. Kamani Silva">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp <span>*</span></label>
+          <input class="form-input" id="fPhone" type="tel" placeholder="e.g. 077 123 4567">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Service Required <span>*</span></label>
+        <select class="form-input" id="fService">
+          <option value="">-- Select a service --</option>
+          <option>Ladies Dress</option>
+          <option>Ladies Blouse</option>
+          <option>Bridal Wear</option>
+          <option>Kids Frock</option>
+          <option>School Uniform</option>
+          <option>Alteration / Repair</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message / Details</label>
+        <textarea class="form-input" id="fMsg" placeholder="Tell us more about what you need, preferred colors, sizes, occasion..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitEnquiry()">
+        &#128232; Send via WhatsApp
+      </button>
+      <p class="form-note">&#128274; Your information is private and only sent to the shop via WhatsApp.</p>
+      <div class="success-msg" id="successMsg">&#9989; Enquiry sent! We will contact you shortly on WhatsApp.</div>
     </div>
+  </div>
+</section>
 
-    <footer>
-        <p>© 2026 S.P Garment #28 Tailors - Horampalla, Minuwangoda. All Rights Reserved.</p>
-        <p style="font-size: 0.75rem; margin-top: 5px; color: #666;">Powered by GitHub Pages. Dynamic state tracking enabled.</p>
-    </footer>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container" style="text-align:center">
+    <div class="slabel reveal">Contact</div>
+    <h2 class="stitle reveal">Reach <span>Us</span></h2>
+    <p style="color:rgba(255,255,255,0.7);max-width:480px;margin:0 auto;line-height:1.7;font-size:0.95rem" class="reveal">
+      Ready to create your perfect outfit? We would love to hear from you!
+    </p>
+    <div class="cg">
+      <div class="cc reveal"><div class="cci">&#128222;</div><div class="ccl">Phone</div><div class="ccv"><a href="tel:0112283254">011-2283254</a></div></div>
+      <div class="cc reveal"><div class="cci">&#128241;</div><div class="ccl">WhatsApp</div><div class="ccv"><a href="https://wa.me/94768318149" target="_blank">076-8318149</a></div></div>
+      <div class="cc reveal"><div class="cci">&#128205;</div><div class="ccl">Location</div><div class="ccv" style="font-size:0.85rem">Horampalla, Negombo</div></div>
+      <div class="cc reveal"><div class="cci">&#128336;</div><div class="ccl">Hours</div><div class="ccv" style="font-size:0.82rem">Mon&ndash;Sat: 8:30&ndash;5:30<br>Sun: 9:30&ndash;5:30</div></div>
+    </div>
+    <a href="https://wa.me/94768318149" class="wa reveal" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</section>
 
-    <script>
-        // Centralized App State Values
-        let currentLang = 'EN'; // EN or SI
-        const WHATSAPP_NUMBER = "94768318149"; // Correct international format for +94768318149
+<footer>
+  <p>&copy; 2026 <strong>S.P. Garment</strong> &middot; Custom Tailoring &middot; Horampalla, Negombo, Sri Lanka</p>
+  <p style="margin-top:5px">&#128222; 011-2283254 &nbsp;|&nbsp; Mon&ndash;Sat: 8:30AM&ndash;5:30PM &nbsp;|&nbsp; Sun: 9:30AM&ndash;5:30PM</p>
+</footer>
 
-        // Dual-Language Localization Mapping Object
-        const textContent = {
-            EN: {
-                heroTitle: "Exclusive Custom Tailoring",
-                heroSubtitle: "We create perfectly fitted, high-quality Ladies and Kids outfits uniquely crafted just for you.",
-                heroCta: "Order / Inquire via WhatsApp",
-                infoHoursTitle: "Opening Hours",
-                infoLocTitle: "Our Location",
-                infoContactTitle: "Call Us Directly",
-                servicesTitle: "Our Tailoring Services",
-                galleryTitle: "Product Showcase Gallery",
-                gallerySubtitle: "Explore designs crafted by S.P Garment",
-                dirBoxTitle: "Find Us On Maps",
-                dirBoxDesc: "We are located comfortably at Horampalla, Negombo. Click the smart button below to launch Google Maps directly on your iPhone, Android Mobile, or Desktop Computer with optimized route directions.",
-                dirBtnText: "Get Accurate Directions Now",
-                formTitle: "Send Custom Info & Order",
-                lblFormType: "Select Request Type",
-                lblName: "Your Full Name",
-                lblCloth: "Garment Category",
-                lblMsg: "Detailed Specifications / Feedback",
-                btnSubmitText: "Submit Directly via WhatsApp",
-                srvTitle1: "Ladies Dresses", srvDesc1: "Custom elegant frocks, maxis, and casual dresses tailored to perfection.",
-                srvTitle2: "Ladies Blouses", srvDesc2: "Beautifully styled office blouses, crop tops, and design shirts.",
-                srvTitle3: "Bridal Wear", srvDesc3: "Special wedding frocks, bridesmaids attire, and party dresses.",
-                srvTitle4: "Kids Frocks", srvDesc4: "Pretty festive dresses and birthday frocks for baby girls.",
-                srvTitle5: "Kids Wear", srvDesc5: "Comfortable custom daily outfits, shirts, and sets for your toddlers.",
-                srvTitle6: "School Uniforms", srvDesc6: "Perfectly sized school uniforms and sports uniforms for girls and kids."
-            },
-            SI: {
-                heroTitle: "විශිෂ්ඨ නිමාවෙන් යුත් ඇඟලුම්",
-                heroSubtitle: "කාන්තා සහ කුඩා දරුවන් සඳහාම වෙන්වූ, උසස්ම තත්ත්වයේ ඇඳුම් ඔබගේ කැමැත්ත පරිදි මසා දෙනු ලැබේ.",
-                heroCta: "WhatsApp මඟින් ඇණවුම් කරන්න",
-                infoHoursTitle: "විවෘත වේලාවන්",
-                infoLocTitle: "අපගේ ස්ථානය",
-                infoContactTitle: "දුරකථන අංකය",
-                servicesTitle: "අපගේ සේවාවන්",
-                galleryTitle: "නිර්මාණ එකතුව",
-                gallerySubtitle: "S.P Garment වෙතින් මසන ලද ඇඳුම් මෝස්තර කිහිපයක්",
-                dirBoxTitle: "සිතියම මඟින් අපව සොයාගන්න",
-                dirBoxDesc: "අපගේ ඇඟලුම් හල හොරම්පල්ල, මිනුවන්ගොඩ ප්‍රදේශයේ පිහිටා ඇත. ඔබගේ ජංගම දුරකථනයෙන් හෝ පරිගණකයෙන් නිවැරදිම මාර්ගය සොයාගැනීමට පහත බොත්තම ක්ලික් කරන්න.",
-                dirBtnText: "දැන්ම මාර්ගය ලබාගන්න",
-                formTitle: "විස්තර සහ ඇණවුම් අප වෙත එවන්න",
-                lblFormType: "අවශ්‍යතාවය තෝරන්න",
-                lblName: "ඔබගේ සම්පූර්ණ නම",
-                lblCloth: "ඇඳුම් වර්ගය",
-                lblMsg: "විස්තර සහ වෙනත් කරුණු",
-                btnSubmitText: "WhatsApp මඟින් ඍජුවම යොමු කරන්න",
-                srvTitle1: "කාන්තා ගවුම්", srvDesc1: "වර්ණවත් ඇඳුම් වර්ග - සාමාන්‍ය සහ විශේෂ උත්සව සඳහා.",
-                srvTitle2: "කාන්තා බ්ලවුස්", srvDesc2: "කාර්යාලීය සහ නවීන විලාසිතාවේ කාන්තා ඇඳුම්.",
-                srvTitle3: "මනාලියන්ගේ ඇඳුම්", srvDesc3: "මනාලියන්ට සහ දෙවැනි මනාලියන්ට අවශ්‍ය උත්සව ඇඳුම් මසාදීම.",
-                srvTitle4: "ළමා ගවුම්", srvDesc4: "කුඩා ගැහැණු ළමුන් සඳහා අලංකාර උපන්දින සහ උත්සව ගවුම් වර්ග.",
-                srvTitle5: "ළමා ඇඳුම්", srvDesc5: "කුඩා දරුවන්ට සුවපහසු දෛනික ඇඳුම් කට්ටල සහ කලිසම්, ෂර්ට් වර්ග.",
-                srvTitle6: "පාසල් නිල ඇඳුම්", srvDesc6: "නිවැරදි මිමි වලට අනුව මසන ලද කදිම පාසල් සහ ක්‍රීඩා නිල ඇඳුම්."
-            }
-        };
+<script>
+// ── VISITOR TRACKING ──
+(function(){
+  const key = "spg_visits";
+  const visits = JSON.parse(localStorage.getItem(key)||"[]");
+  visits.push({
+    time: new Date().toISOString(),
+    page: location.href,
+    ref: document.referrer || "direct",
+    ua: navigator.userAgent.substring(0,80)
+  });
+  // Keep last 500
+  if(visits.length > 500) visits.splice(0, visits.length - 500);
+  localStorage.setItem(key, JSON.stringify(visits));
+  localStorage.setItem("spg_total", (parseInt(localStorage.getItem("spg_total")||"0")+1).toString());
+})();
 
-        // Initialize Application & Visitor Logs Configuration
-        window.addEventListener('DOMContentLoaded', () => {
-            let totalHits = localStorage.getItem('sp_web_views') || 0;
-            totalHits = parseInt(totalHits) + 1;
-            localStorage.setItem('sp_web_views', totalHits);
+// ── NAV ──
+window.addEventListener("scroll",()=>document.getElementById("nav").classList.toggle("scrolled",scrollY>50));
+function toggleMenu(){document.getElementById("nav").classList.toggle("menu-open")}
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>document.getElementById("nav").classList.remove("menu-open")));
 
-            addAuditLog("Visitor landed on the homepage via " + (navigator.userAgent.includes("Mobi") ? "Mobile Device" : "PC / Desktop"));
-            checkStoreStatus();
-            renderGallery();
-        });
+// ── REVEAL ──
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:0.1,rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 
-        // Function tracking customized analytics inside localStorage
-        function trackInteraction(actionType) {
-            let count = localStorage.getItem('sp_interactions') || 0;
-            count = parseInt(count) + 1;
-            localStorage.setItem('sp_interactions', count);
-            addAuditLog("Action trigger execution: " + actionType);
-        }
+// ── HOURS STATUS ──
+function checkHours(){
+  const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60;
+  let open=false;
+  if(d>=1&&d<=6&&h>=8.5&&h<17.5) open=true; // Mon-Sat 8:30-5:30
+  if(d===0&&h>=9.5&&h<17.5) open=true;       // Sun 9:30-5:30
+  const b=document.querySelector(".ob"),t=document.getElementById("openText"),dot=document.querySelector(".od");
+  if(open){
+    b.style.cssText="display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#16a34a;padding:6px 14px;border-radius:20px;font-size:0.76rem;font-weight:600;margin-bottom:18px";
+    t.textContent="Open Now · Closes 5:30 PM";
+  }else{
+    b.style.cssText="display:inline-flex;align-items:center;gap:6px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#dc2626;padding:6px 14px;border-radius:20px;font-size:0.76rem;font-weight:600;margin-bottom:18px";
+    dot.style.background="#ef4444";
+    t.textContent=d===0?"Closed · Opens 9:30 AM":"Closed · Opens 8:30 AM";
+  }
+}
+checkHours();
 
-        // Live Operational Shop Time Logic Engine
-        function checkStoreStatus() {
-            const badge = document.getElementById('storeBadge');
-            const now = new Date();
-            const day = now.getDay(); 
-            const hour = now.getHours();
-            const minute = now.getMinutes();
-            const currentTimeDec = hour + (minute / 60);
+// ── ENQUIRY FORM ──
+function submitEnquiry(){
+  const name=document.getElementById("fName").value.trim();
+  const phone=document.getElementById("fPhone").value.trim();
+  const service=document.getElementById("fService").value;
+  const msg=document.getElementById("fMsg").value.trim();
+  if(!name||!phone||!service){alert("Please fill in Name, Phone and Service.");return;}
+  const text=`*New Enquiry - S.P. Garment*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Service:* ${encodeURIComponent(service)}%0A*Message:* ${encodeURIComponent(msg||"No message")}%0A%0ASent from website`;
+  window.open(`https://wa.me/94768318149?text=${text}`,"_blank");
+  document.getElementById("successMsg").classList.add("show");
+  document.getElementById("fName").value="";
+  document.getElementById("fPhone").value="";
+  document.getElementById("fService").value="";
+  document.getElementById("fMsg").value="";
+  // Save enquiry locally for admin
+  const enqs=JSON.parse(localStorage.getItem("spg_enquiries")||"[]");
+  enqs.unshift({name,phone,service,msg,time:new Date().toISOString()});
+  if(enqs.length>200) enqs.splice(200);
+  localStorage.setItem("spg_enquiries",JSON.stringify(enqs));
+}
 
-            let isOpen = false;
-            
-            if (day === 0) { 
-                if (currentTimeDec >= 9.5 && currentTimeDec <= 17.5) isOpen = true;
-            } else { 
-                if (currentTimeDec >= 8.5 && currentTimeDec <= 17.5) isOpen = true;
-            }
+// ── LIGHTBOX ──
+function openLB(src){document.getElementById("lbImg").src=src;document.getElementById("lb").classList.add("show");document.body.style.overflow="hidden"}
+function closeLB(){document.getElementById("lb").classList.remove("show");document.body.style.overflow=""}
 
-            if (isOpen) {
-                badge.innerText = currentLang === 'EN' ? "● WE ARE OPEN NOW" : "● අප දැනට විවෘතයි";
-                badge.className = "status-badge status-open";
-            } else {
-                badge.innerText = currentLang === 'EN' ? "● SHOP CLOSED NOW" : "● අප දැනට වසා ඇත";
-                badge.className = "status-badge status-closed";
-            }
-        }
-
-        // Language Switch Interfacer
-        function toggleLanguage() {
-            currentLang = currentLang === 'EN' ? 'SI' : 'EN';
-            document.getElementById('langBtn').innerText = currentLang === 'EN' ? 'සිංහල' : 'English';
-            
-            const labels = textContent[currentLang];
-            for (let key in labels) {
-                const element = document.getElementById(key);
-                if (element) element.innerText = labels[key];
-            }
-
-            document.querySelector('.srv-title-1').innerText = labels.srvTitle1;
-            document.querySelector('.srv-desc-1').innerText = labels.srvDesc1;
-            document.querySelector('.srv-title-2').innerText = labels.srvTitle2;
-            document.querySelector('.srv-desc-2').innerText = labels.srvDesc2;
-            document.querySelector('.srv-title-3').innerText = labels.srvTitle3;
-            document.querySelector('.srv-desc-3').innerText = labels.srvDesc3;
-            document.querySelector('.srv-title-4').innerText = labels.srvTitle4;
-            document.querySelector('.srv-desc-4').innerText = labels.srvDesc4;
-            document.querySelector('.srv-title-5').innerText = labels.srvTitle5;
-            document.querySelector('.srv-desc-5').innerText = labels.srvDesc5;
-            document.querySelector('.srv-title-6').innerText = labels.srvTitle6;
-            document.querySelector('.srv-desc-6').innerText = labels.srvDesc6;
-
-            checkStoreStatus();
-            addAuditLog(`Language toggled switcher to: ${currentLang}`);
-        }
-
-        // Send feedback & configuration parameters straight to WhatsApp Link Generator
-        function sendToWhatsApp(event) {
-            event.preventDefault();
-            trackInteraction('Form Submission WhatsApp API Button Pressed');
-
-            const reqType = document.getElementById('formType').value;
-            const name = document.getElementById('custName').value;
-            const cloth = document.getElementById('clothType').value;
-            const message = document.getElementById('custMessage').value;
-
-            const messageText = `*S.P Garment %2328 Website Submission*\n\n• *Type:* ${reqType}\n• *Customer Name:* ${name}\n• *Category Choice:* ${cloth}\n• *Details:* ${message}`;
-            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(messageText)}`;
-            window.open(url, '_blank');
-        }
-
-        // Interactive Internal Audit Logs Engine
-        function addAuditLog(textStr) {
-            let currentLogs = JSON.parse(localStorage.getItem('sp_audit_logs')) || [];
-            const timestamp = new Date().toLocaleString();
-            currentLogs.unshift({ time: timestamp, text: textStr });
-            if (currentLogs.length > 40) currentLogs.pop();
-            localStorage.setItem('sp_audit_logs', JSON.stringify(currentLogs));
-        }
-
-        // Password Protected Admin Portal
-        function openAdminPanel() {
-            const accessPassword = prompt("Please enter the Secure Admin Password to login:");
-            
-            // Password set to: SP28admin
-            if (accessPassword !== "SP28admin") {
-                alert("Incorrect Admin Password! Access Denied.");
-                addAuditLog("Failed unauthorized Admin login attempt blocked.");
-                return; 
-            }
-
-            document.getElementById('adminModal').style.display = 'flex';
-            
-            document.getElementById('statViews').innerText = localStorage.getItem('sp_web_views') || 1;
-            document.getElementById('statInteractions').innerText = localStorage.getItem('sp_interactions') || 0;
-
-            const tbody = document.getElementById('logTableBody');
-            tbody.innerHTML = '';
-            const logs = JSON.parse(localStorage.getItem('sp_audit_logs')) || [];
-            
-            if(logs.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="2" style="text-align:center; color:#999;">No actions tracked yet.</td></tr>';
-            } else {
-                logs.forEach(item => {
-                    tbody.innerHTML += `<tr><td><strong>${item.time}</strong></td><td>${item.text}</td></tr>`;
-                });
-            }
-            addAuditLog("Admin successfully authenticated and logged in.");
-        }
-
-        function closeAdminPanel() {
-            document.getElementById('adminModal').style.display = 'none';
-        }
-
-        // Gallery Dynamic Rendering
-        function renderGallery() {
-            const galleryGrid = document.getElementById('photoGallery');
-            const customImages = JSON.parse(localStorage.getItem('sp_custom_images')) || [];
-            
-            if (customImages.length > 0) {
-                galleryGrid.innerHTML = '';
-                customImages.forEach(imgUrl => {
-                    galleryGrid.innerHTML += `<div class="gallery-item"><img src="${imgUrl}" onerror="this.src='https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=200'" alt="Tailored Wear"></div>`;
-                });
-                if (customImages.length < 3) {
-                    galleryGrid.innerHTML += `<div class="gallery-item"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=300"></div>`;
-                }
-            }
-        }
-
-        function addNewAdminImage() {
-            const inputField = document.getElementById('newImgUrl');
-            const urlVal = inputField.value.trim();
-            if(!urlVal) return alert("Please fill/paste a valid R2 file URL link.");
-
-            let customImages = JSON.parse(localStorage.getItem('sp_custom_images')) || [];
-            customImages.unshift(urlVal);
-            localStorage.setItem('sp_custom_images', JSON.stringify(customImages));
-            
-            inputField.value = '';
-            renderGallery();
-            addAuditLog("Admin uploaded new gallery item photo URL link");
-            alert("New photo synced successfully! Check your gallery below.");
-        }
-
-        function clearAdminImages() {
-            localStorage.removeItem('sp_custom_images');
-            location.reload();
-        }
-    </script>
+// ── GALLERY ──
+const PHOTOS=[
+  // {url:"https://pub-YOUR-ID.r2.dev/photo1.jpg",caption:"Ladies Dress"},
+];
+if(PHOTOS.length>0){
+  document.getElementById("galleryGrid").innerHTML=PHOTOS.map(p=>`<div class="gi" onclick="openLB('${p.url}')"><img src="${p.url}" alt="${p.caption}" loading="lazy"><div class="go"><span class="gc">${p.caption}</span></div></div>`).join("");
+}
+</script>
 </body>
 </html>
